@@ -83,7 +83,7 @@ struct Graph {
 
 ```
 
-Como se pueden dar cuenta, el grafo utiliza un solo mapa (`adjacencyMap`). Las **claves** de este mapa son los nombres de los nodos (cadenas de texto o `char*`), y los **valores** asociados a cada clave son una **Lista enlazada** que contiene elementos de tipo `Edge*` (las aristas que salen de ese nodo).
+Como se pueden dar cuenta, el grafo utiliza un solo mapa (`adjacencyMap`). Las **claves** de este mapa son los nombres de los nodos (cadenas de texto o `char*`), y los **valores** asociados a cada clave son una **Lista** que contiene elementos de tipo `Edge*` (las aristas que salen de ese nodo).
 
 Dado que el mapa necesita saber cómo comparar las claves (que en este caso son strings), se proporciona la siguiente función auxiliar:
 
@@ -101,10 +101,12 @@ En las pruebas de código, se inicializará un mapa internamente pasando funcion
 
 ### Ejercicios
 
-Revise el código base proporcionado en `graph.c`. Debe completar la implementación de las siguientes funciones. Recuerde manejar correctamente la memoria y verificar que los parámetros no sean nulos (`NULL`).
+Revise el código base proporcionado en `graph.c`. También revisa las operaciones que puedes usar para los TDA Lista y Mapa: `list.h`, `map.h`.
+
+Debe completar la implementación de las siguientes funciones. Recuerde manejar correctamente la memoria y verificar que los parámetros no sean nulos (`NULL`).
 
 **1.- Implemente la función `createGraph`**
-Esta función debe crear y retornar un nuevo grafo vacío. Debe reservar memoria para la estructura `Graph` y luego inicializar su mapa interno (`adjacencyMap`) utilizando la función constructora del mapa (ej. `createMap(is_equal_string)`).
+Esta función debe crear y retornar un nuevo grafo vacío. Debe reservar memoria para la estructura `Graph` y luego inicializar su mapa interno (`adjacencyMap`) utilizando la función constructora del mapa (ej. `map_create(is_equal_string)`).
 
 ```c
 Graph* createGraph() {
@@ -183,7 +185,7 @@ int getWeight(Graph* g, const char* label1, const char* label2) {
 Retorna una **nueva lista** que contenga únicamente los nombres (los strings) de los nodos adyacentes al nodo `label`.
 
 * Obtenga la lista de aristas (estructuras `Edge*`) del nodo `label`.
-* Cree una nueva Lista (`createList()`).
+* Cree una nueva Lista (`list_create()`).
 * Itere sobre las aristas y agregue únicamente el campo `target` de cada arista a esta nueva lista.
 * Retorne la nueva lista.
 
