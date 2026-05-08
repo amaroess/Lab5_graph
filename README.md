@@ -66,7 +66,7 @@ Un estudiante puede compartir un fragmento de su propio código junto con el men
 
 En este laboratorio implementaremos un **Grafo Dirigido** utilizando la representación de listas de adyacencia. Para lograr un acceso rápido a los nodos, combinaremos esta representación con un **Mapa (Diccionario)**.
 
-Para ello usaremos las siguientes estructuras subyacentes (asumiendo que las librerías `map.h` y `list.h` ya están implementadas):
+Para ello usaremos las siguientes estructuras subyacentes:
 
 ```c
 // Representa una conexión entre dos nodos
@@ -101,7 +101,7 @@ En las pruebas de código, se inicializará un mapa internamente pasando funcion
 
 ### Ejercicios
 
-Revise el código base proporcionado en `graph.c`. También revisa las operaciones que puedes usar para los TDA Lista y Mapa: `list.h`, `map.h`.
+Revise el código base proporcionado en `graph.c`. También revise las operaciones de los TDA Lista y Mapa: `list.h`, `map.h`.
 
 Debe completar la implementación de las siguientes funciones. Recuerde manejar correctamente la memoria y verificar que los parámetros no sean nulos (`NULL`).
 
