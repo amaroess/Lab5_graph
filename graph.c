@@ -69,7 +69,7 @@ int getWeight(Graph* g, const char* label1, const char* label2) {
     if(!par) return -1;
     List* listaSRC = par->value;
     Edge* pos = list_first(listaSRC);
-    while(pos != NULL)
+    while(pos)
         {
             if(strcmp(pos->target,label2) == 0) 
             {
