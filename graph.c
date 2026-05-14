@@ -45,21 +45,22 @@ void addNode(Graph* g, const char* label)
 
 void addEdge(Graph* g, const char* src, const char* dest, int weight) 
 {
-    if (!g || !src || !dest) return;
-    MapPair* par = map_search(g->adjacencyMap,(void*)src);
-    if(!par) return;
-    Edge* arista = (Edge*) malloc(sizeof(Edge));
-    arista->target = strdup(dest);
-    arista->weight = weight;
-    //List* listaSrc = par->value;
-    list_pushBack(par->value,arista);
+    if (!g || !src || !dest) return; // se verifica que no haya NULL
+    MapPair* par = map_search(g->adjacencyMap,(void*)src); // se busca par source
+    if(!par) return; // si par no existe se retorna
+    Edge* arista = (Edge*) malloc(sizeof(Edge)); // se reserva memoria tipo edge
+    arista->target = strdup(dest); // se le asigna al target de la arista una copia del destino (*char)
+    arista->weight = weight; // se le asigna el peso 
+    list_pushBack(par->value,arista); // se inserta la arista a la lista de conexiones de src;
     
 }
 
-List* getEdges(Graph* g, const char* label) {
+List* getEdges(Graph* g, const char* label) 
+{
     if (!g || !label) return NULL;
-
-    return NULL;
+    MapPair* par = map_search(g->adjacencyMap,(void*)label);
+    if(!par) return NULL;
+    return par->value;
 }
 
 int getWeight(Graph* g, const char* label1, const char* label2) {
