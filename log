@@ -112,3 +112,18 @@ graph.c:76:24: error: invalid use of incomplete typedef ‘List’
    76 |                 return listaSRC[i]->weight;
       |                        ^~~~~~~~
 b197915
+Thu May 14 10:23:43 PM UTC 2026: 
+ graph.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+Compilation failed
+In file included from test.c:5:
+graph.c: In function ‘getWeight’:
+graph.c:71:13: error: statement with no effect [-Werror=unused-value]
+   71 |     for(pos != NULL)
+      |             ^
+graph.c:71:20: error: expected ‘;’ before ‘)’ token
+   71 |     for(pos != NULL)
+      |                    ^
+graph.c:71:20: error: expected expression before ‘)’ token
+cc1: all warnings being treated as errors
+c97535f
