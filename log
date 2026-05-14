@@ -37,3 +37,25 @@ Thu May 14 09:45:31 PM UTC 2026:
  1 file changed, 1 insertion(+), 1 deletion(-)
  tests:  0|0
 51caf04
+Thu May 14 10:07:47 PM UTC 2026: 
+ graph.c | 28 ++++++++++++++++++----------
+ 1 file changed, 18 insertions(+), 10 deletions(-)
+Compilation failed
+In file included from test.c:5:
+graph.c: In function ‘createGraph’:
+graph.c:31:51: error: ‘v’ undeclared (first use in this function)
+   31 |     Graph* grafo = (Graph*) malloc(sizeof(Graph));v // se reserva memoria para el grafo
+      |                                                   ^
+graph.c:31:51: note: each undeclared identifier is reported only once for each function it appears in
+graph.c:31:52: error: expected ‘;’ before ‘if’
+   31 |     Graph* grafo = (Graph*) malloc(sizeof(Graph));v // se reserva memoria para el grafo
+      |                                                    ^
+      |                                                    ;
+   32 |     if(grafo == NULL) return NULL; // si hubo un error en la reserva de memoria se retorna el null
+      |     ~~                                              
+graph.c: In function ‘addEdge’:
+graph.c:55:5: error: implicit declaration of function ‘list_pushback’; did you mean ‘list_pushBack’? [-Wimplicit-function-declaration]
+   55 |     list_pushback(par->value,arista);
+      |     ^~~~~~~~~~~~~
+      |     list_pushBack
+84512c7

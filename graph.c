@@ -28,24 +28,32 @@ int is_equal_string(void *key1, void *key2) {
 
 Graph* createGraph() 
 {
-    Graph* grafo = (Graph*) malloc(sizeof(Graph));
-    if(grafo == NULL) return NULL;
-    grafo->adjacencyMap = map_create(is_equal_string);
-    return grafo;
+    Graph* grafo = (Graph*) malloc(sizeof(Graph));v // se reserva memoria para el grafo
+    if(grafo == NULL) return NULL; // si hubo un error en la reserva de memoria se retorna el null
+    grafo->adjacencyMap = map_create(is_equal_string); // se crea el mapa para el grafo
+    return grafo; // se retorna
 }
 
 void addNode(Graph* g, const char* label) 
 {
-    if (!g || !label) return;
-    if(map_search(g->adjacencyMap,(void*)label) != NULL) return;
-    char* clabel = strdup(label);
-    List* L = list_create();
-    map_insert(g->adjacencyMap, clabel, L);
+    if (!g || !label) return; // es lo mismo que if(g == NULL || label == NULL) return;
+    if(map_search(g->adjacencyMap,(void*)label) != NULL) return; // si label existe dentro del mapa se retorna
+    char* clabel = strdup(label); // copia de label
+    List* L = list_create(); // se crea lista de conexiones
+    map_insert(g->adjacencyMap, clabel, L); // se inserta el par en el mapa
 }
 
-void addEdge(Graph* g, const char* src, const char* dest, int weight) {
+void addEdge(Graph* g, const char* src, const char* dest, int weight) 
+{
     if (!g || !src || !dest) return;
-
+    MapPair* par = map_search(g->adjacencyMap,(void*)src);
+    if(!par) return;
+    Edge* arista = (Edge*) malloc(sizeof(Edge));
+    arista->target = strdup(dest);
+    arista->weight = weight;
+    //List* listaSrc = par->value;
+    list_pushback(par->value,arista);
+    
 }
 
 List* getEdges(Graph* g, const char* label) {
