@@ -28,7 +28,7 @@ int is_equal_string(void *key1, void *key2) {
 
 Graph* createGraph() 
 {
-    Graph* grafo = (Graph*) malloc(sizeof(Graph));v // se reserva memoria para el grafo
+    Graph* grafo = (Graph*) malloc(sizeof(Graph)); // se reserva memoria para el grafo
     if(grafo == NULL) return NULL; // si hubo un error en la reserva de memoria se retorna el null
     grafo->adjacencyMap = map_create(is_equal_string); // se crea el mapa para el grafo
     return grafo; // se retorna

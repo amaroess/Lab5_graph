@@ -76,3 +76,8 @@ graph.c:31:52: error: expected ‘;’ before ‘if’
    32 |     if(grafo == NULL) return NULL; // si hubo un error en la reserva de memoria se retorna el null
       |     ~~                                              
 53b9e0a
+Thu May 14 10:08:18 PM UTC 2026: 
+ graph.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  0|0
+d30542b
