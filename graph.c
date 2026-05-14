@@ -57,45 +57,47 @@ void addEdge(Graph* g, const char* src, const char* dest, int weight)
 
 List* getEdges(Graph* g, const char* label) 
 {
-    if (!g || !label) return NULL;
-    MapPair* par = map_search(g->adjacencyMap,(void*)label);
-    if(!par) return NULL;
-    return par->value;
+    if (!g || !label) return NULL; // verificar NULL
+    MapPair* par = map_search(g->adjacencyMap,(void*)label); // se busca par de label
+    if(!par) return NULL; // si no existe en el mapa se retorna
+    return par->value; // se retorna la lista de el par
 }
 
-int getWeight(Graph* g, const char* label1, const char* label2) {
-    if (!g || !label1 || !label2) return -1;
-    MapPair* par = map_search(g->adjacencyMap,(void*)label1);
-    if(!par) return -1;
-    List* listaSRC = par->value;
-    Edge* pos = list_first(listaSRC);
-    while(pos)
+int getWeight(Graph* g, const char* label1, const char* label2) 
+{
+    if (!g || !label1 || !label2) return -1; // verificar NULL
+    MapPair* par = map_search(g->adjacencyMap,(void*)label1); // se busca el par de label1
+    if(!par) return -1; // si no existe se retorna -1
+    List* listaSRC = par->value; // para iterar se guarda lista en otra variable
+    Edge* pos = list_first(listaSRC); // variable para recorrer, se le asigna primera posición dentro de la lista.
+    while(pos) // mientras pos != NULL
         {
-            if(strcmp(pos->target,label2) == 0) 
+            if(strcmp(pos->target,label2) == 0)  /* si posicion (pos->target) dentro de la lista tiene el mismo string que label2 significaria que existe
+            conexion entre la lista de label1 y label2, label1 ---> label2 */
             {
-                //wbuscada = listaSRC[i]->weight;
-                return pos->weight;
+                return pos->weight; // se retorna peso como se pide
             }   
-            pos = list_next(listaSRC);
+            pos = list_next(listaSRC); // si no se encuentra se avanza
         }
     // Si no existe el origen o terminamos de iterar sin encontrar el destino
     return -1; 
 }
 
 // Retorna una nueva List* que contiene elementos de tipo char* (las etiquetas)
-List* getAdjacentLabels(Graph* g, const char* label) {
-    if (!g || !label) return NULL;
-    MapPair* par = map_search(g->adjacencyMap,(void*)label);
-    if(!par) return NULL;
-    List* listaL = par->value;
-    List* listanew = list_create();
-    Edge* pos = list_first(listaL);
+List* getAdjacentLabels(Graph* g, const char* label) 
+{
+    if (!g || !label) return NULL; // verificar NULL
+    MapPair* par = map_search(g->adjacencyMap,(void*)label); // se buscar par de label
+    if(!par) return NULL; // si no existe se retorna
+    List* listaL = par->value; // se guarda lista de label en variable (para recorrer)
+    List* listanew = list_create(); // se crea lista nueva para guardar solo los target
+    Edge* pos = list_first(listaL); // variable para recorrer, empieza en la primera posición de la lista
     while(pos) // while pos != NULL
         {
-            list_pushBack(listanew,pos->target);
-            pos = list_next(listaL);
+            list_pushBack(listanew,pos->target); // se inserta target al final de la lista recien creada
+            pos = list_next(listaL); // se avanza
         }
-    return listanew;
+    return listanew; // se retorna la lista nueva
 }
 
 void destroyGraph(Graph* g) {
