@@ -26,7 +26,10 @@ int is_equal_string(void *key1, void *key2) {
  *         IMPLEMENTACIÓN
  * ========================================= */
 
-Graph* createGraph() {
+Graph* createGraph() 
+{
+
+    
     return NULL;
 }
 
