@@ -87,3 +87,28 @@ Thu May 14 10:14:33 PM UTC 2026:
  tests:  8|2
 ========================================
 adbdd11
+Thu May 14 10:21:27 PM UTC 2026: 
+ graph.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:5:
+graph.c: In function ‘getWeight’:
+graph.c:71:28: error: invalid use of undefined type ‘struct List’
+   71 |     for(int i = 0; listaSRC[i] != NULL; i++)
+      |                            ^
+graph.c:71:20: error: invalid use of incomplete typedef ‘List’
+   71 |     for(int i = 0; listaSRC[i] != NULL; i++)
+      |                    ^~~~~~~~
+graph.c:73:31: error: invalid use of undefined type ‘struct List’
+   73 |             if(strcmp(listaSRC[i]->target,label2) == 0)
+      |                               ^
+graph.c:73:23: error: invalid use of incomplete typedef ‘List’
+   73 |             if(strcmp(listaSRC[i]->target,label2) == 0)
+      |                       ^~~~~~~~
+graph.c:76:32: error: invalid use of undefined type ‘struct List’
+   76 |                 return listaSRC[i]->weight;
+      |                                ^
+graph.c:76:24: error: invalid use of incomplete typedef ‘List’
+   76 |                 return listaSRC[i]->weight;
+      |                        ^~~~~~~~
+b197915
